@@ -62,14 +62,14 @@ with col1:
     st.markdown("**Re-write your text in different styles**")
 
 with col2:
-    st.write("Contact with [William Sun](omniai.labs4ever@gmail.com) for any issues")
+    st.write("Contact with [*William Sun*](omniai.labs4ever@gmail.com) for any issues")
 
 
 #Input OpenAI API Key
 st.markdown("## Enter Your OpenAI API Key")
 
 def get_openai_api_key():
-    input_text = st.text_input(label="OpenAI API Key ",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key_input", type="password")
+    input_text = st.text_input(label="Your OpenAI API Key ",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key_input", type="password")
     return input_text
 
 openai_api_key = get_openai_api_key()
