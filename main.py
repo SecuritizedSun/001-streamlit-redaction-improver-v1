@@ -68,11 +68,70 @@ with col2:
 #Input OpenAI API Key
 st.markdown("## Enter Your OpenAI API Key")
 
+# "key" makes this widget tied to st.session_state["openai_api_key_input"].
+'''
+Example where key matters:
+st.text_input("Name")
+st.text_input("Name")  # ❌ Will crash — same label, no unique key
+
+# Correct:
+st.text_input("Name", key="name1")
+st.text_input("Name", key="name2")
+
+Example using session state:
+input_text = st.text_input("OpenAI API Key", key="api_key")
+
+# Access it later:
+if st.button("Print Key"):
+    st.write(st.session_state["api_key"])
+'''
 def get_openai_api_key():
     input_text = st.text_input(label="Your OpenAI API Key ",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key_input", type="password")
     return input_text
 
 openai_api_key = get_openai_api_key()
+
+'''
+Values inside st.session_state persist across user actions.
+1, Track user input values
+
+st.text_input("Enter name", key="username")
+
+# Access the value
+st.write("You typed:", st.session_state["username"])
+
+2, Manually store variables
+
+st.session_state["count"] = st.session_state.get("count", 0)
+
+if st.button("Add 1"):
+    st.session_state["count"] += 1
+
+st.write("Counter:", st.session_state["count"])
+
+3,  Initialize only once- Use if "key" not in st.session_state to initialize state variables:
+
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+
+4, Control widgets programmatically
+
+st.session_state["username"] = "William"
+st.text_input("Enter name", key="username")  # Shows "William" prefilled
+
+Remember:
+You must use a key to connect a widget with st.session_state.
+Avoid using the same key across multiple widgets unless you're intentionally reusing values.
+Session state is not permanent; it's wiped when the session ends (e.g., page reload).
+| Feature                       | Description                                            |
+| ----------------------------- | ------------------------------------------------------ |
+| `st.session_state["var"]`     | Access a stored value                                  |
+| `st.session_state.get("var")` | Safer way to access, returns `None` if not found       |
+| `st.session_state["var"] = x` | Store a value manually                                 |
+| `key="var"` in widget         | Automatically binds widget value to `st.session_state` |
+| Widget → `st.session_state`   | Happens automatically when `key` is used               |
+
+'''
 
 
 # Input
