@@ -126,8 +126,7 @@ if draft_input:
 
     st.write(improved_redaction)
 
-    
-'''
+note1 = '''
 Example where key matters:
 st.text_input("Name")
 st.text_input("Name")  # ❌ Will crash — same label, no unique key
@@ -142,8 +141,7 @@ input_text = st.text_input("OpenAI API Key", key="api_key")
 # Access it later:
 if st.button("Print Key"):
     st.write(st.session_state["api_key"])
-'''
-'''
+
 Values inside st.session_state persist across user actions.
 1, Track user input values
 
