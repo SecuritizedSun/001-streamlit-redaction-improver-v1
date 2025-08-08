@@ -62,7 +62,7 @@ with col1:
     st.markdown("**Re-write your text in different styles**")
 
 with col2:
-    st.write("Contact with [*William Sun*](omniai.labs4ever@gmail.com) for any issues")
+    st.write("Contact [*William Sun*](omniai.labs4ever@gmail.com) for any issues")
 
 
 #Input OpenAI API Key
